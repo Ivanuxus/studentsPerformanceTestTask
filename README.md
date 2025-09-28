@@ -12,3 +12,5 @@ pytest
 
 Покрытие
 pytest --cov
+
+https://docs.google.com/document/d/1Wq7ALJDhin2uY5ldh4srWQFsfJxWUZK_SK4INIwUWug/edit?tab=t.0#heading=h.or54d8e34zbk
