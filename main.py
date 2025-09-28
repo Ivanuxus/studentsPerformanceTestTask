@@ -32,18 +32,26 @@ def calculate_averages(students=read_data()):
         return students
 
 def sort_by_grade(students=calculate_averages()):
-        print(students[0])
-        print(students[1])
-        print(students[2])
-        print(students[3])
         for i in range(len(students[3])):
-                pass
+                for j in range(i, len(students[3])):
+                        if(students[3][j] < students[3][i]):
+                                students[0][j], students[0][i] = students[0][i], students[0][j]
+                                students[1][j], students[1][i] = students[1][i], students[1][j]
+                                students[2][j], students[2][i] = students[2][i], students[2][j]
+                                students[3][j], students[3][i] = students[3][i], students[3][j]
+        return students
+def print_grades(students=sort_by_grade()):
+        toPrint = []
+        for i in range(len(students[0])):
+                toPrint.append([students[0][i], students[3][i]])
+        print(tabulate(toPrint, headers=['Name', 'Grade'], tablefmt='github'))
                 
 
 def form_grades():
         read_data()
         calculate_averages()
         sort_by_grade()
+        print_grades()
 
 if __name__ == "__main__":
         form_grades()
