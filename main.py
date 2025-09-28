@@ -39,15 +39,20 @@ def calculate_averages(students):
         while 0 in students[3]:
                 students[3].pop()
         return students
+def is_number(x):
+    return isinstance(x, (int, float, complex))
 
 def sort_by_grade(students):
         for i in range(len(students[3])):
                 for j in range(i, len(students[3])):
-                        if(students[3][j] < students[3][i]):
-                                students[0][j], students[0][i] = students[0][i], students[0][j]
-                                students[1][j], students[1][i] = students[1][i], students[1][j]
-                                students[2][j], students[2][i] = students[2][i], students[2][j]
-                                students[3][j], students[3][i] = students[3][i], students[3][j]
+                        if(is_number(students[3][j]) and is_number(students[3][i])):
+                                if(students[3][j] < students[3][i]):
+                                        students[0][j], students[0][i] = students[0][i], students[0][j]
+                                        students[1][j], students[1][i] = students[1][i], students[1][j]
+                                        students[2][j], students[2][i] = students[2][i], students[2][j]
+                                        students[3][j], students[3][i] = students[3][i], students[3][j]
+                        else:
+                                raise SystemError
         return students
 def print_grades_and_write(students, args):
         toPrint = []
